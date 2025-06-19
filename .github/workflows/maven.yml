@@ -21,6 +21,15 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn clean install
+    - name: Build & push Docker image
+      user: mr-smithers-excellent/docker-build-push@v5
+      with:
+        image: jaiganesh567/github-action-example-workflow1
+        tags: latest
+        registry: docker.io
+        dockerfile: DockerFile
+        username: 
+        password:
 
 
       
