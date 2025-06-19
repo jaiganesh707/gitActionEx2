@@ -12,21 +12,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Set up JDK 21
-      uses: actions/setup-java@v4
-      with:
-        java-version: '21'
-        distribution: 'adopt'
-        cache: maven
-    - name: Build with Maven
-      run: mvn clean install
-    - name: Build & push Docker image
-      user: mr-smithers-excellent/docker-build-push@v5
-      with:
-        image: jaiganesh567/github-action-example-workflow1
-        tags: latest
-        registry: docker.io
-        dockerfile: DockerFile
-        username: 
-        password:
+      - uses: actions/checkout@v4
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'adopt'
+          cache: maven
+      - name: Build with Maven
+        run: mvn clean install
+      - name: Build & push Docker image
+        run: mr-smithers-excellent/docker-build-push@v5
+        with:
+          image: jaiganesh567/github-action-example-workflow1
+          tags: latest
+          registry: docker.io
+          dockerfile: DockerFile
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
