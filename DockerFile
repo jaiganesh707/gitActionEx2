@@ -1,4 +1,4 @@
-FROM openjdk:8
+FROM openjdk:21
 EXPOSE 8080
 ADD target/github-action-example-workflow1.jar github-action-example-workflow1.jar
 ENTRYPOINT ["java","-jar","github-action-example-workflow1.jar"]
